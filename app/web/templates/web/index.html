@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+Hola {{user.email}} !
+<br>
+{% for s in stock %}
+ {{s.name}} -> {{s.client.username}}
+ <br>
+{% endfor %}
+{% endblock content %}
+

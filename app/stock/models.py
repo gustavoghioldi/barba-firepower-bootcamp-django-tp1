@@ -9,5 +9,7 @@ class StockModel(models.Model):
     description = models.TextField()
     code = models.CharField(max_length=32)
     expiration = models.DateField(null=True, default=None)
+    image = models.FileField(upload_to='images/', null=True, default=None)
+
     class Meta:
         unique_together = ("client", "code")

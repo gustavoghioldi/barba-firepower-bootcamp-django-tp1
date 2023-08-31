@@ -11,6 +11,7 @@ class IndexView(LoginRequiredMixin, View):
         template = loader.get_template("web/index.html")
         stock_by_interes = StockModel.objects.filter(business_line=request.user.business_line_interes).exclude(client=request.user)
         context = {
-            "stock": stock_by_interes
+            "stock": stock_by_interes,
+            "default_image": "documents/images/default.png"
         }
         return HttpResponse(template.render(context, request))

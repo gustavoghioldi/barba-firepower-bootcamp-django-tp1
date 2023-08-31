@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -128,3 +129,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "clients.ClientModel"
+MEDIA_URL = '/documents/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
+DEFAULT_IMAGE = "documents/images/default.png"

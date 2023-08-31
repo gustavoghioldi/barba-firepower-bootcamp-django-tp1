@@ -1,10 +1,26 @@
 {% extends "base.html" %}
+
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}" />
+
 Hola {{user.email}} !
 <br>
 {% for s in stock %}
- {{s.name}} -> {{s.client.username}}
+<p>
+{% if s.image%}
+<img src="{{s.image.url}}" alt="" srcset="" width="50" height="50">
+{% else %}
+<img src="{{default_image}}" alt="" srcset="" width="50" height="50">
+{% endif %}
+
+
+{{s.name}} -> {{s.client.username}}</p>
+
  <br>
 {% endfor %}
+
 {% endblock content %}
+
+
 

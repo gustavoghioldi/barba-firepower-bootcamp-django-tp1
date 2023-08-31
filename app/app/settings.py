@@ -132,3 +132,5 @@ AUTH_USER_MODEL = "clients.ClientModel"
 MEDIA_URL = '/documents/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
 DEFAULT_IMAGE = "documents/images/default.png"
+
+LOGOUT_REDIRECT_URL = "/"

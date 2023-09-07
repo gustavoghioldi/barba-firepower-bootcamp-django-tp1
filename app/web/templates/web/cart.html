@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+{% for item in cart %}
+<p>{{item.stock.name}} - ${{item.stock.price}} - {{item.qt}}</p>
+{% endfor %}
+<p>Total a pagar:$ {{total}}</p>
+{% endblock content %}

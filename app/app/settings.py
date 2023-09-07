@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'clients',
     "signup",
     "web",
-    "stock"
+    "stock",
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "clients.ClientModel"
 MEDIA_URL = '/documents/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
-DEFAULT_IMAGE = "documents/images/default.png"
 
 LOGOUT_REDIRECT_URL = "/"
+
+IMAGES = {
+    "default" : "documents/images/default.png",
+    "arrow" : "documents/images/arrow.png",
+    "question" : "documents/images/question.png",
+}

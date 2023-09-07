@@ -7,16 +7,29 @@
 
 <br>
 {% for s in stock %}
+<form action="{% url 'web:cart' %}" method="POST">
+    {% csrf_token %}
 <p>
 {% if s.image%}
 <img src="{{s.image.url}}" alt="" srcset="" width="50" height="50">
 {% else %}
-<img src="{{default_image}}" alt="" srcset="" width="50" height="50">
+<img src="{{images.default}}" alt="" srcset="" width="50" height="50">
+
 {% endif %}
 
+{{s.name}} -> {{s.client.username}}
+${{s.price}}
+<input type="text" value="{{s.pk}}" name="id" hidden>
+<input type="number"  name="qt" >
+<button type="submit">
+    <img src="{{images.arrow}}" alt="" srcset="" width="40" height="20" style="transform:rotate(180deg);">
+</button>
 
-{{s.name}} -> {{s.client.username}}</p>
 
+<img src="{{images.question}}" alt="" srcset="" width="30" height="15" >
+
+</p>
+</form>
  <br>
 {% endfor %}
 

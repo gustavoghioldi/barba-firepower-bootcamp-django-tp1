@@ -1,19 +1,17 @@
-from typing import Any
 from django.http import HttpResponse
 from django.views import View
 from django.template import loader
 from django.contrib.auth.mixins import LoginRequiredMixin
-from app.settings import IMAGES
 from cart.models import CartModel
 from stock.models import StockModel
 from web.services.cart_service import CartService
 
 class CartView(LoginRequiredMixin, View):
-    def __init__(self, **kwargs: Any) -> None:
+    def __init__(self, **kwargs) -> None:
         self.template = loader.get_template("web/cart.html")
         super().__init__(**kwargs)
+    
     def get(self, request):
-        
         context = CartService.get_context(request.user)
         return HttpResponse(self.template.render(context, request))
     
@@ -39,7 +37,6 @@ class CartView(LoginRequiredMixin, View):
         #resta del stock
         stock.qt -= float(request.POST.get("qt"))
         stock.save()
-
         #traer el contexto desde un servico
         context = CartService.get_context(request.user)
         return HttpResponse(self.template.render(context, request))

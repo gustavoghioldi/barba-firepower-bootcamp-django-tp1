@@ -1,3 +1,4 @@
+from typing import Any
 from django.http import HttpResponse
 from django.views import View
 from django.template import loader
@@ -8,13 +9,15 @@ from stock.models import StockModel
 from web.services.cart_service import CartService
 
 class CartView(LoginRequiredMixin, View):
+    def __init__(self, **kwargs: Any) -> None:
+        self.template = loader.get_template("web/cart.html")
+        super().__init__(**kwargs)
     def get(self, request):
-        template = loader.get_template("web/cart.html")
+        
         context = CartService.get_context(request.user)
-        return HttpResponse(template.render(context, request))
+        return HttpResponse(self.template.render(context, request))
     
     def post(self, request):
-        template = loader.get_template("web/cart.html")
         #traer stock del producto seleccionado
         stock = StockModel.objects.get(id=request.POST.get("id"))
         #comparar si hay la cantidad suficiente del producto selecionado
@@ -39,4 +42,4 @@ class CartView(LoginRequiredMixin, View):
 
         #traer el contexto desde un servico
         context = CartService.get_context(request.user)
-        return HttpResponse(template.render(context, request))
+        return HttpResponse(self.template.render(context, request))

@@ -7,5 +7,5 @@ class CartService:
         cart_context = CartModel.objects.filter(client=client)
         return {
             "cart": cart_context,
-            "total": CartModel.objects.filter(client=client).aggregate(sum=Sum(F('stock__price')*F('qt')))["sum"]
+            "total": cart_context.aggregate(sum=Sum(F('stock__price')*F('qt')))["sum"]
         }

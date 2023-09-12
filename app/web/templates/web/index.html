@@ -25,9 +25,9 @@ ${{s.price}}
     <img src="{{images.arrow}}" alt="" srcset="" width="40" height="20" style="transform:rotate(180deg);">
 </button>
 
-
-<img src="{{images.question}}" alt="" srcset="" width="30" height="15" >
-
+<a href="{% url 'web:comunication' %}?item={{s.pk}}">
+    <img src="{{images.question}}" alt="" srcset="" width="30" height="15" >
+</a>
 </p>
 </form>
  <br>

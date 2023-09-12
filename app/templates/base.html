@@ -17,6 +17,7 @@
             {% if user.is_authenticated %}
             <a href="{% url 'web:index' %}">Home</a>
             <a href="{% url 'web:cart' %}">Cart</a>
+            <a href="{% url 'web:comunication_interaction' %}">Comunication</a>
             <a href="/accounts/logout">Salir</a>
             {% endif %}
         </div>

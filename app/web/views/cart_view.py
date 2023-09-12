@@ -18,10 +18,7 @@ class CartView(LoginRequiredMixin, View):
     def post(self, request):
         #traer stock del producto seleccionado
         stock = StockModel.objects.get(id=request.POST.get("id"))
-        #comparar si hay la cantidad suficiente del producto selecionado
-        if stock.qt < float(request.POST.get("qt")):
-            #si no hay la cantidad suficiente lanza exception
-            raise Exception("Stock insuficiente")
+        
         #trae el item del stock dentro del carro del cliente
         cart_model = CartModel.objects.filter(client=request.user, stock=stock).first()
         #si ya existe el item suma la qt 
@@ -34,9 +31,7 @@ class CartView(LoginRequiredMixin, View):
                 client=request.user, 
                 stock=stock, 
                 qt=request.POST.get("qt"))
-        #resta del stock
-        stock.qt -= float(request.POST.get("qt"))
-        stock.save()
+        
         #traer el contexto desde un servico
         context = CartService.get_context(request.user)
         return HttpResponse(self.template.render(context, request))

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "web",
     "stock",
     "cart",
+    "comunication",
+    'django_q',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +141,10 @@ IMAGES = {
     "default" : "documents/images/default.png",
     "arrow" : "documents/images/arrow.png",
     "question" : "documents/images/question.png",
+}
+
+Q_CLUSTER = {
+   'retry': 5,
+   'workers': 4,
+   'orm': 'default',
 }

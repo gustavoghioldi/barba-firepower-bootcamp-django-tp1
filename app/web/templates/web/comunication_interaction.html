@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+{% for c in comuncations %}
+    {{c.question}} --> {{c.answer}} <br>
+{% endfor %}
+{% endblock content %}

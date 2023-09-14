@@ -7,4 +7,7 @@
 <p>{{item.stock.name}} - ${{item.stock.price}} - {{item.qt}}</p>
 {% endfor %}
 <p>Total a pagar:$ {{total}}</p>
+<p>
+    <a href="?route=checkout" class="btn btn-primary">Ir a pagar</a>
+</p>
 {% endblock content %}

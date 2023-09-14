@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "stock",
     "cart",
     "comunication",
+    "sales",
     'django_q',
 ]
 
@@ -148,3 +149,7 @@ Q_CLUSTER = {
    'workers': 4,
    'orm': 'default',
 }
+
+DECIDIR_URL = os.environ.get("DECIDIR_URL", "https://developers.decidir.com/api/v2")
+DECIDIR_APIKEY = os.environ.get("DECIDIR_APIKEY", "4ae76f00234843d1af5994ed4674fd76")
+DECIDIR_APIKEY_PRIVATE = os.environ.get("DECIDIR_APIKEY_PRIVATE", "3891f691dc4f40b6941a25a68d17c7f4")

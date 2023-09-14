@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from cart.models import CartModel
 from stock.models import StockModel
 from web.services.cart_service import CartService
-
+from web.forms.checkout_form import CheckoutForm
 class CartView(LoginRequiredMixin, View):
     def __init__(self, **kwargs) -> None:
         self.template = loader.get_template("web/cart.html")
@@ -13,6 +13,10 @@ class CartView(LoginRequiredMixin, View):
     
     def get(self, request):
         context = CartService.get_context(request.user)
+        if request.GET.get("route") == "checkout":
+            self.template = loader.get_template("web/checkout.html")
+            context["form"]= CheckoutForm
+        
         return HttpResponse(self.template.render(context, request))
     
     def post(self, request):

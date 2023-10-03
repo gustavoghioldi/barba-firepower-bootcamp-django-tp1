@@ -47,4 +47,4 @@ class PaymentService:
          "sub_payments":[]}
       
       response = requests.post(f"{DECIDIR_URL}/payments", json=payload, headers=headers)
-      return response 
+      return True if response.status_code == 201 else False

@@ -34,7 +34,7 @@ class CartView(LoginRequiredMixin, View):
             CartModel.objects.create(
                 client=request.user, 
                 stock=stock, 
-                qt=request.POST.get("qt"))
+                qt=float(request.POST.get("qt")))
         
         #traer el contexto desde un servico
         context = CartService.get_context(request.user)

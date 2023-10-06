@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "cart",
     "comunication",
     "sales",
+    "rest_framework",
     'django_q',
 ]
 
